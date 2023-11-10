@@ -13,7 +13,7 @@ sqlite_conn = "sqlite:///airports.sqlite"
 #SQLAlchemy engine
 engine = sa.create_engine(sqlite_conn)
 
-#Write the data in the table "airports"
+#Writing the data in the table "airports"
 data.to_sql("airports", engine, index=False, if_exists="replace")
 
 #Confirmation message
