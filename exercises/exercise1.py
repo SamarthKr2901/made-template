@@ -20,10 +20,10 @@ dtypes = {
     "column_4": sa.types.TEXT,
     "column_5": sa.types.TEXT,
     "column_6": sa.types.TEXT,
-    "column_7": sa.types.REAL,
-    "column_8": sa.types.REAL,
+    "column_7": sa.types.FLOAT,
+    "column_8": sa.types.FLOAT,
     "column_9": sa.types.INTEGER,
-    "column_10": sa.types.REAL,
+    "column_10": sa.types.FLOAT,
     "column_11": sa.types.TEXT,
     "column_12": sa.types.TEXT,
     "geo_punkt": sa.types.TEXT
