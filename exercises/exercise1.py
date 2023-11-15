@@ -14,7 +14,7 @@ sqlite_conn = "sqlite:///airports.sqlite"
 engine = sa.create_engine(sqlite_conn)
 
 dtypes = {
-    "column_1": sa.types.INTEGER,
+    "column_1": sa.types.BIGINT,
     "column_2": sa.types.TEXT,
     "column_3": sa.types.TEXT,
     "column_4": sa.types.TEXT,
@@ -22,7 +22,7 @@ dtypes = {
     "column_6": sa.types.TEXT,
     "column_7": sa.types.FLOAT,
     "column_8": sa.types.FLOAT,
-    "column_9": sa.types.INTEGER,
+    "column_9": sa.types.BIGINT,
     "column_10": sa.types.FLOAT,
     "column_11": sa.types.TEXT,
     "column_12": sa.types.TEXT,
