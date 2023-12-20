@@ -12,6 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    # The Kaggle username and key are stored as secrets in the repository's settings.
     - name: Set up Kaggle
       run: |
         mkdir $HOME/.kaggle
