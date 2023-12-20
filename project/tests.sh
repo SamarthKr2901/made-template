@@ -4,7 +4,7 @@
 ./project/pipeline.sh
 
 # Check if the output files exist
-if [ -f "data/Twitch_game_data.csv" ]; then
+if [ -f "./data/data.sqlite" ]; then
     echo "Data pipeline completed successfully!"
 else
     echo "Error: Data pipeline failed to create output files."
