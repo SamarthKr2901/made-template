@@ -1,14 +1,18 @@
 #!/bin/bash
 
+# Navigate to the project directory
+cd project
+
 # Execute the data pipeline
-python3 pipeline.py
+./pipeline.sh
 
 # Check if the output files exist
-if [ -f "../data/data.sqlite" ]; then
+if [ -f "data/data.sqlite" ]; then
     echo "Data pipeline completed successfully!"
 else
     echo "Error: Data pipeline failed to create output files."
     exit 1
 fi
 
-# Add system-test level test case here
+# Navigate back to the root directory
+cd ..
