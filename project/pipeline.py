@@ -16,28 +16,22 @@ data_folder = os.path.join(current_directory, '..', 'data')
 # Checking if the Data folder is already there, if not, creating it
 if not os.path.exists(data_folder):
     os.makedirs(data_folder)
-download_folder = data_folder
 
-# Download Location
-# download_folder = 'C:\Users\evils\Desktop\MADE Data\MADE\made-template\data'
-
-# This uses the Kaggle.json file which is saved in my local folder - Contains the API name + key.
-# Initializing Kaggle API
 api = KaggleApi()
 api.authenticate()
 
 # Downloading Dataset
 try:
-    api.dataset_download_files(twitch_dataset_url, path=download_folder, unzip=True)
+    api.dataset_download_files(twitch_dataset_url, path=data_folder, unzip=True)
 except KeyError:
     print("Error: 'Content-Length' header not found in the response from the Kaggle API.")
 
 # Reading Both Datasets
-csv_file_path = os.path.join(download_folder, 'Twitch_game_data.csv')
+csv_file_path = os.path.join(data_folder, 'Twitch_game_data.csv')
 twitch_data = pd.read_csv(csv_file_path, sep=",", lineterminator="\n", encoding='cp1252')
 
 # Displaying Downloaded Files - COVID dataset file is not downloaded/displayed but directly added to the SQLite database
-files = os.listdir(download_folder)
+files = os.listdir(data_folder)
 print("Downloaded files:", files)
 
 # Reading WHO COVID-19 Global Data
