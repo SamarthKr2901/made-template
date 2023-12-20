@@ -27,7 +27,10 @@ api = KaggleApi()
 api.authenticate()
 
 # Downloading Dataset
-api.dataset_download_files(twitch_dataset_url, path=download_folder, unzip=True)
+try:
+    api.dataset_download_files(twitch_dataset_url, path=download_folder, unzip=True)
+except KeyError:
+    print("Error: 'Content-Length' header not found in the response from the Kaggle API.")
 
 # Reading Both Datasets
 csv_file_path = os.path.join(download_folder, 'Twitch_game_data.csv')
