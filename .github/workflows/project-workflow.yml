@@ -12,6 +12,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Set up Kaggle
+      run: |
+        mkdir $HOME/.kaggle
+        echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > $HOME/.kaggle/kaggle.json
+        chmod 600 $HOME/.kaggle/kaggle.json
+
     - name: Set up Python 3.11
       uses: actions/setup-python@v4
       with:
