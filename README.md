@@ -1,42 +1,34 @@
-# Methods of Advanced Data Engineering Template Project
+## Title
 
-This template project provides some structure for your open data project in the MADE module at FAU.
-This repository contains (a) a data science project that is developed by the student over the course of the semester, and (b) the exercises that are submitted over the course of the semester.
-Before you begin, make sure you have [Python](https://www.python.org/) and [Jayvee](https://github.com/jvalue/jayvee) installed. We will work with [Jupyter notebooks](https://jupyter.org/). The easiest way to do so is to set up [VSCode](https://code.visualstudio.com/) with the [Jupyter extension](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter).
+Pandemic Playtime: Analyzing Twitch Viewership Trends During COVID-19.
 
+## Main Question
 
-## Project Work
-Your data engineering project will run alongside lectures during the semester. We will ask you to regularly submit project work as milestones so you can reasonably pace your work. All project work submissions **must** be placed in the `project` folder.
+1. Is there a correlation between the increase in Twitch viewership and the progression of the COVID-19 pandemic?
+2. Whether certain game genres (e.g., multiplayer, cooperative, or single-player) gained more popularity on Twitch during the pandemic and if this correlated with pandemic-related factors.
+3. Do certain demographics (e.g., age, location) engage more with gaming content during the pandemic?
 
-### Exporting a Jupyter Notebook
-Jupyter Notebooks can be exported using `nbconvert` (`pip install nbconvert`). For example, to export the example notebook to html: `jupyter nbconvert --to html examples/final-report-example.ipynb --embed-images --output final-report.html`
+## Description
 
+The COVID-19 pandemic and subsequent lockdowns had a profound impact on various aspects of everyone's lives, including their entertainment choices. This project analyzes the behavioral change of people as they turn to online gaming and streaming in response to the pandemic's challenges. It also allows us the gain insight into the role of online entertainment platforms, like Twitch during a time like this.
 
-## Exercises
-During the semester you will need to complete exercises, sometimes using [Python](https://www.python.org/), sometimes using [Jayvee](https://github.com/jvalue/jayvee). You **must** place your submission in the `exercises` folder in your repository and name them according to their number from one to five: `exercise<number from 1-5>.<jv or py>`.
+We can do this by finding a correlation between the increase in COVID cases and hours watched/streamed on Twitch before and after the pandemic. If we do find a direct correlation between the two, it would mean that people did rely more on these methods of entertainment during the pandemic.
 
-In regular intervalls, exercises will be given as homework to complete during the semester. We will divide you into two groups, one completing an exercise in Jayvee, the other in Python, switching each exercise. Details and deadlines will be discussed in the lecture, also see the [course schedule](https://made.uni1.de/). At the end of the semester, you will therefore have the following files in your repository:
+Furthermore, a deeper insight could be gathered into which genre of games and what type of people were the most affected.  
 
-1. `./exercises/exercise1.jv` or `./exercises/exercise1.py`
-2. `./exercises/exercise2.jv` or `./exercises/exercise2.py`
-3. `./exercises/exercise3.jv` or `./exercises/exercise3.py`
-4. `./exercises/exercise4.jv` or `./exercises/exercise4.py`
-5. `./exercises/exercise5.jv` or `./exercises/exercise5.py`
+## Datasources
 
-### Exercise Feedback
-We provide automated exercise feedback using a GitHub action (that is defined in `.github/workflows/exercise-feedback.yml`). 
+### Datasource1: Twitch-game-data
 
-To view your exercise feedback, navigate to Actions -> Exercise Feedback in your repository.
+A Kaggle Dataset of Top 200 Ranked observations for each month from the year 2016 to 2023. Games are ranked according to their watched hours. This data was taken from 'sullygnome.com' - a Twitch analytics and statistics site. It provides data that is crucial for the analysis like the Total watched and streamed hours, number of streamers, and viewers for all the top 200 games for each month. The time frame for this data includes the time before, during, and after the COVID-19 pandemic, thus letting us monitor its impact on Twitch viewership over its complete duration.
 
-The exercise feedback is executed whenever you make a change in files in the `exercise` folder and push your local changes to the repository on GitHub. To see the feedback, open the latest GitHub Action run, open the `exercise-feedback` job and `Exercise Feedback` step. You should see command line output that contains output like this:
+* Metadata URL: https://www.kaggle.com/datasets/rankirsh/evolution-of-top-games-on-twitch?select=Twitch_game_data.csv
+* Data URL: https://www.kaggle.com/datasets/rankirsh/evolution-of-top-games-on-twitch?select=Twitch_game_data.csv
+* Data Type: CSV
 
-```sh
-Found exercises/exercise1.jv, executing model...
-Found output file airports.sqlite, grading...
-Grading Exercise 1
-	Overall points 17 of 17
-	---
-	By category:
-		Shape: 4 of 4
-		Types: 13 of 13
-```
+### Datasource2: WHO-COVID-19-global-data
+
+Also a well-maintained Kaggle dataset. The original roots of the data come from a reputed known for its research-focused, comprehensive, and up-to-date data about various global issues including the COVID-19 pandemic. It provides a huge dataset of 67 features, distributed over a range of 2 years on a per-day basis from 01-01-2020 to 05-03-2022, for all the countries As it covers the entirety of the duration of the pandemic, we can visualize exactly when it hit the hardest along with the total cases and the death toll.
+
+Kaggle URL - https://www.kaggle.com/datasets/georgesaavedra/covid19-dataset
+Original URL - https://ourworldindata.org/covid-vaccinations
