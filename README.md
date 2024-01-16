@@ -14,6 +14,9 @@ We can do this by finding a correlation between the increase in COVID cases and 
 
 Furthermore, a deeper insight could be gathered into which genre of games and what type of people were the most affected.  
 
+## Final Report Link:  
+https://github.com/SamarthKr2901/made-template/blob/main/project/report.ipynb
+
 ## Datasources
 
 ### Datasource1: Twitch-game-data
