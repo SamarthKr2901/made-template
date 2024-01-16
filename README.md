@@ -1,4 +1,4 @@
-# **Pandemic Playtime:** Analyzing Twitch Viewership Trends During COVID-19.
+#  **Pandemic Playtime:** Analyzing Twitch Viewership Trends During COVID-19.
 
 ## Main Question
 
@@ -20,13 +20,14 @@ Furthermore, a deeper insight could be gathered into which genre of games and wh
 
 A Kaggle Dataset of Top 200 Ranked observations for each month from the year 2016 to 2023. Games are ranked according to their watched hours. This data was taken from 'sullygnome.com' - a Twitch analytics and statistics site. It provides data that is crucial for the analysis like the Total watched and streamed hours, number of streamers, and viewers for all the top 200 games for each month. The time frame for this data includes the time before, during, and after the COVID-19 pandemic, thus letting us monitor its impact on Twitch viewership over its complete duration.
 
-* Metadata URL: https://www.kaggle.com/datasets/rankirsh/evolution-of-top-games-on-twitch?select=Twitch_game_data.csv
-* Data URL: https://www.kaggle.com/datasets/rankirsh/evolution-of-top-games-on-twitch?select=Twitch_game_data.csv
-* Data Type: CSV
+**Kaggle URL** - https://www.kaggle.com/datasets/rankirsh/evolution-of-top-games-on-twitch/data  
+**Original URL** - https://sullygnome.com/  
+**Data Type:** CSV  
 
 ### Datasource2: WHO-COVID-19-global-data
 
 Also a well-maintained Kaggle dataset. The original roots of the data come from a reputed known for its research-focused, comprehensive, and up-to-date data about various global issues including the COVID-19 pandemic. It provides a huge dataset of 67 features, distributed over a range of 2 years on a per-day basis from 01-01-2020 to 05-03-2022, for all the countries As it covers the entirety of the duration of the pandemic, we can visualize exactly when it hit the hardest along with the total cases and the death toll.
 
-Kaggle URL - https://www.kaggle.com/datasets/georgesaavedra/covid19-dataset
-Original URL - https://ourworldindata.org/covid-vaccinations
+**Kaggle URL** - https://www.kaggle.com/datasets/georgesaavedra/covid19-dataset  
+**Original URL** - https://ourworldindata.org/covid-vaccinations  
+**Data Type:** CSV
