@@ -1,6 +1,4 @@
-## Title
-
-Pandemic Playtime: Analyzing Twitch Viewership Trends During COVID-19.
+# **Pandemic Playtime:** Analyzing Twitch Viewership Trends During COVID-19.
 
 ## Main Question
 
