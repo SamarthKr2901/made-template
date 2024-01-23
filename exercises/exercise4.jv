@@ -1,0 +1,115 @@
+pipeline TempPipeline {
+
+    TempFileDownloader -> ZipArchiveInterpreter;
+
+    ZipArchiveInterpreter
+    -> TempFilePicker
+    -> TempTextInterpreter
+    -> TempCSVInterpreter
+    -> RenameTemperaturCellWriter
+    -> RenameTemperaturBatteryCellWriter
+    -> TempColumnDeleter
+    -> TempTableInterpreter
+    -> CelsiusToFahrenheitTemperatur
+    -> CelsiusToFahrenheitBatterietemperatur
+    -> TempLoader;
+
+    // Download the zip.
+    block TempFileDownloader oftype HttpExtractor {
+        url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip";
+    }
+    
+    // Interpret the zip.
+    block ZipArchiveInterpreter oftype ArchiveInterpreter {
+        archiveType: "zip";
+    }
+
+    block TempFilePicker oftype FilePicker { 
+        path: "/data.csv";
+    }
+    
+    // Interpret the text.
+    block TempTextInterpreter oftype TextFileInterpreter {}
+
+    // Interpret the csv.
+    block TempCSVInterpreter oftype CSVInterpreter {
+        delimiter: ";";
+    }
+
+    // Rename Headers.
+    block RenameTemperaturCellWriter oftype CellWriter {
+        at: cell E1;
+        write: ["Temperatur"]; 
+    }
+
+    block RenameTemperaturBatteryCellWriter oftype CellWriter {
+        at: cell J1;
+        write: ["Batterietemperatur"]; 
+    }
+
+    // Delete Columns
+    block TempColumnDeleter oftype ColumnDeleter {
+        delete: [column F, column G, column H, column I];
+    }
+    
+    // Interpret the table
+    block TempTableInterpreter oftype TableInterpreter    {
+        header: false;
+        columns: [
+            "Geraet" oftype validGeraet,
+            "Hersteller" oftype text,
+            "Model" oftype text,
+            "Monat" oftype integer,
+            "Temperatur" oftype decimal,
+            "Batterietemperatur" oftype decimal,
+            "Geraet aktiv" oftype geraetStatus
+        ];
+    }
+
+    // Renaming
+    block CelsiusToFahrenheitTemperatur oftype TableTransformer {
+        inputColumns: ['Temperatur'];
+        outputColumn: 'Temperatur';
+        use: CelsiusToFahrenheit;
+    }
+
+    // Renaming
+    block CelsiusToFahrenheitBatterietemperatur oftype TableTransformer {
+        inputColumns: ['Batterietemperatur'];
+        outputColumn: 'Batterietemperatur';
+        use: CelsiusToFahrenheit;
+    }
+
+    // Celsius to fahrenheit
+    transform CelsiusToFahrenheit {
+        from tempCelsius oftype decimal;
+        to tempFahrenheit oftype decimal;
+
+        tempFahrenheit: (tempCelsius * 9/5) + 32; 
+    }
+
+    valuetype validGeraet oftype integer {
+        constraints: [ validGeraetConstraint ];
+    } 
+
+    constraint validGeraetConstraint on decimal: 
+        value > 0; 
+
+    valuetype geraetStatus oftype text {
+        constraints: [
+            geraetValidStatus,
+        ];
+    }
+
+    constraint geraetValidStatus on text:
+        value in [
+            "Ja", "Nein"
+        ];
+    
+    // Write the Data to SQL 
+    block TempLoader oftype SQLiteLoader {
+        table: "temperatures";
+        file: "./temperatures.sqlite";
+    }
+
+}
